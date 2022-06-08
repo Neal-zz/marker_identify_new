@@ -667,11 +667,11 @@ bool markerIdentify(const cv::Mat& leftSrc, const cv::Mat& rightSrc, std::vector
 
 		std::vector<cv::Point2f> lPts, rPts;
 		lPts.emplace_back(leftPC[i].p1 + cv::Point2f(roi_l_minx[i], roi_l_miny[i]));
+		lPts.emplace_back(leftPC[i].p2 + cv::Point2f(roi_l_minx[i], roi_l_miny[i]));
 		lPts.emplace_back(leftPC[i].p3 + cv::Point2f(roi_l_minx[i], roi_l_miny[i]));
-		lPts.emplace_back(leftPC[i].p4 + cv::Point2f(roi_l_minx[i], roi_l_miny[i]));
 		rPts.emplace_back(rightPC[j].p1 + cv::Point2f(roi_r_minx[j], roi_r_miny[j]));
+		rPts.emplace_back(rightPC[j].p2 + cv::Point2f(roi_r_minx[j], roi_r_miny[j]));
 		rPts.emplace_back(rightPC[j].p3 + cv::Point2f(roi_r_minx[j], roi_r_miny[j]));
-		rPts.emplace_back(rightPC[j].p4 + cv::Point2f(roi_r_minx[j], roi_r_miny[j]));
 		std::vector<cv::Point3f> pts3D = uv2xyz(lPts, rPts, cameraMatrixl, distCoeffsl, cameraMatrixr, distCoeffsr, T2);
 
 		//std::cout << pts3D[0] << std::endl;
